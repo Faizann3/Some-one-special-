@@ -16,7 +16,8 @@ body{
 
     font-family:'Poppins',sans-serif;
 
-    overflow:hidden;
+    overflow-y:auto;
+overflow-x:hidden;
 
     background:#070b17;
 
@@ -226,7 +227,7 @@ opacity:0;
 
 .screen{
 
-    position:absolute;
+    position:fixed;
 
     inset:0;
 
@@ -237,6 +238,8 @@ opacity:0;
     align-items:center;
 
     padding:20px;
+ overflow-y:auto;
+    -webkit-overflow-scrolling:touch;
 
     opacity:0;
 
@@ -757,7 +760,8 @@ background-size:200% 200%;
 
 animation:bgMove 18s ease infinite;
 
-overflow:hidden;
+overflow-y:auto;
+overflow-x:hidden;
 
 }
 
