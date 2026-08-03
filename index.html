@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Access Granted</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+background:#000;
+color:#00ff88;
+font-family:Consolas,monospace;
+overflow:hidden;
+}
+
+canvas{
+position:fixed;
+top:0;
+left:0;
+z-index:-1;
+}
+
+#terminal{
+width:90%;
+max-width:900px;
+margin:40px auto;
+padding:20px;
+background:rgba(0,0,0,.75);
+border:2px solid #00ff88;
+border-radius:12px;
+box-shadow:0 0 30px #00ff88;
+}
+
+#text{
+white-space:pre-wrap;
+font-size:20px;
+line-height:34px;
+}
+
+.cursor{
+animation:blink .8s infinite;
+}
+
+@keyframes blink{
+50%{opacity:0}
+}
+
+#birthday{
+display:none;
+text-align:center;
+margin-top:40px;
+animation:show 2s;
+}
+
+h1{
+font-size:70px;
+color:#fff;
+text-shadow:0 0 25px cyan;
+}
+
+h2{
+font-size:42px;
+margin-top:20px;
+color:#ffd700;
+}
+
+p{
+font-size:25px;
+margin-top:25px;
+color:white;
+padding:0 20px;
+}
+
+.balloon{
+position:absolute;
+font-size:45px;
+animation:fly linear infinite;
+}
+
+@keyframes fly{
+from{
+transform:translateY(120vh);
+}
+to{
+transform:translateY(-120vh);
+}
+}
+
+@keyframes show{
+from{
+opacity:0;
+transform:scale(.2);
+}
+to{
+opacity:1;
+transform:scale(1);
+}
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="matrix"></canvas>
+
+<div id="terminal">
+<div id="text"></div><span class="cursor">█</span>
+</div>
+
+<div id="birthday">
+<h1>🎉 HAPPY BIRTHDAY 🎂</h1>
+
+<h2>Dear Oelelelel (Fidak Batul heheh)</h2>
+
+<p>
+You are officially one year more awesome.<br><br>
+
+May your happiness never crash.<br>
+May your dreams always compile.<br>
+May your life stay bug-free forever.<br><br>
+
+Have an unforgettable Birthday 🎈✨
+</p>
+
+</div>
+
+<script>
+
+const lines=[
+"> Initializing Birthday.exe",
+"> Connecting...",
+"> Access Granted",
+"> Reading Memories...",
+"> 100% Complete",
+"",
+"> Loading Happiness...",
+"> Loading Smiles...",
+"> Installing Success...",
+"> Installing Good Luck...",
+"",
+"> Surprise Ready...",
+"",
+"> Opening Gift..."
+];
+
+let text=document.getElementById("text");
+let i=0;
+
+function type(){
+
+if(i<lines.length){
+
+text.innerHTML+=lines[i]+"<br>";
+
+i++;
+
+setTimeout(type,700);
+
+}else{
+
+document.getElementById("terminal").style.display="none";
+document.getElementById("birthday").style.display="block";
+
+createBalloons();
+
+}
+
+}
+
+setTimeout(type,1000);
+
+const canvas=document.getElementById("matrix");
+const ctx=canvas.getContext("2d");
+
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+let letters="01ABCDEFGHIJKLMNOPQRSTUVWXYZ#$%&";
+letters=letters.split("");
+
+let font=16;
+let columns=canvas.width/font;
+let drops=[];
+
+for(let x=0;x<columns;x++)
+drops[x]=1;
+
+function draw(){
+
+ctx.fillStyle="rgba(0,0,0,.08)";
+ctx.fillRect(0,0,canvas.width,canvas.height);
+
+ctx.fillStyle="#00ff88";
+ctx.font=font+"px monospace";
+
+for(let i=0;i<drops.length;i++){
+
+let text=letters[Math.floor(Math.random()*letters.length)];
+
+ctx.fillText(text,i*font,drops[i]*font);
+
+if(drops[i]*font>canvas.height&&Math.random()>0.975)
+drops[i]=0;
+
+drops[i]++;
+
+}
+
+}
+
+setInterval(draw,35);
+
+function createBalloons(){
+
+const emojis=["🎈","🎉","✨","🎊"];
+
+setInterval(()=>{
+
+let b=document.createElement("div");
+
+b.className="balloon";
+
+b.innerHTML=emojis[Math.floor(Math.random()*emojis.length)];
+
+b.style.left=Math.random()*100+"vw";
+
+b.style.animationDuration=(6+Math.random()*6)+"s";
+
+document.body.appendChild(b);
+
+setTimeout(()=>b.remove(),12000);
+
+},400);
+
+}
+
+</script>
+
+</body>
+</html>
