@@ -1,241 +1,319 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Access Granted</title>
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{
-background:#000;
-color:#00ff88;
-font-family:Consolas,monospace;
-overflow:hidden;
-}
+<title>For Someone Special </title>
 
-canvas{
-position:fixed;
-top:0;
-left:0;
-z-index:-1;
-}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-#terminal{
-width:90%;
-max-width:900px;
-margin:40px auto;
-padding:20px;
-background:rgba(0,0,0,.75);
-border:2px solid #00ff88;
-border-radius:12px;
-box-shadow:0 0 30px #00ff88;
-}
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Pacifico&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-#text{
-white-space:pre-wrap;
-font-size:20px;
-line-height:34px;
-}
+<link rel="stylesheet" href="style.css">
 
-.cursor{
-animation:blink .8s infinite;
-}
+<link rel="stylesheet" href="style.css">
 
-@keyframes blink{
-50%{opacity:0}
-}
-
-#birthday{
-display:none;
-text-align:center;
-margin-top:40px;
-animation:show 2s;
-}
-
-h1{
-font-size:70px;
-color:#fff;
-text-shadow:0 0 25px cyan;
-}
-
-h2{
-font-size:42px;
-margin-top:20px;
-color:#ffd700;
-}
-
-p{
-font-size:25px;
-margin-top:25px;
-color:white;
-padding:0 20px;
-}
-
-.balloon{
-position:absolute;
-font-size:45px;
-animation:fly linear infinite;
-}
-
-@keyframes fly{
-from{
-transform:translateY(120vh);
-}
-to{
-transform:translateY(-120vh);
-}
-}
-
-@keyframes show{
-from{
-opacity:0;
-transform:scale(.2);
-}
-to{
-opacity:1;
-transform:scale(1);
-}
-}
-</style>
 </head>
 
 <body>
 
-<canvas id="matrix"></canvas>
+<div class="background"></div>
 
-<div id="terminal">
-<div id="text"></div><span class="cursor">█</span>
+<div class="particles">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
 </div>
 
-<div id="birthday">
-<h1>🎉 HAPPY BIRTHDAY 🎂</h1>
+<!-- Screen 1 -->
 
-<h2>Dear Oelelelel (Fidak Batul heheh)</h2>
+<section id="welcome" class="screen active">
+
+<div class="glass">
+
+<h1>
+
+Ki Haal Hai Ladli? 
+
+</h1>
 
 <p>
-You are officially one year more awesome.<br><br>
 
-May your happiness never crash.<br>
-May your dreams always compile.<br>
-May your life stay bug-free forever.<br><br>
+Ek chhota sa sawaal...
 
-Have an unforgettable Birthday 🎈✨
+</p>
+
+<div class="buttons">
+
+<button id="goodBtn">
+
+😊 Theek Hu 😁
+
+</button>
+
+<button id="badBtn">
+
+🥺 Nhi Theek Hu 😒
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- Screen 2 -->
+
+<section id="message" class="screen">
+
+<div class="glass">
+
+<h2>
+
+🤨
+
+</h2>
+
+<p id="replyText">
+
+Tu to chill wali hai...
+
+Bhool kaise jaati hai?👺
+
+Chalo...
+
+Mood theek karte hain.😁
+
+</p>
+
+<button id="continue1">
+
+Continue →
+
+</button>
+
+</div>
+
+</section>
+
+<!-- Screen 3 -->
+
+<section id="loading" class="screen">
+
+<div class="glass">
+
+<h2>
+
+Checking Today's Date...
+
+</h2>
+
+<div class="loader">
+
+<div class="progress"></div>
+
+</div>
+
+<p id="loadingText">
+Preparing Something Special...
 </p>
 
 </div>
 
-<script>
+</section>
 
-const lines=[
-"> Initializing Birthday.exe",
-"> Connecting...",
-"> Access Granted",
-"> Reading Memories...",
-"> 100% Complete",
-"",
-"> Loading Happiness...",
-"> Loading Smiles...",
-"> Installing Success...",
-"> Installing Good Luck...",
-"",
-"> Surprise Ready...",
-"",
-"> Opening Gift..."
-];
+<!-- Screen 4 -->
 
-let text=document.getElementById("text");
-let i=0;
+<section id="birthday" class="screen">
 
-function type(){
+<div class="glass birthdayCard">
 
-if(i<lines.length){
+<h1></h1>
 
-text.innerHTML+=lines[i]+"<br>";
+<h2 class="loveFont">
 
-i++;
+Happy Birthday
 
-setTimeout(type,700);
+</h2>
 
-}else{
+<h3>
 
-document.getElementById("terminal").style.display="none";
-document.getElementById("birthday").style.display="block";
+Fidak Batul 😁 And Zunaira Amber 🎀 (Pura Name yaad hai 😁)
 
-createBalloons();
+</h3>
 
-}
+<p>
 
-}
+Not every day deserves a celebration.
 
-setTimeout(type,1000);
+But today definitely does.
 
-const canvas=document.getElementById("matrix");
-const ctx=canvas.getContext("2d");
+</p>
 
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
+<button id="nextQuestion">
 
-let letters="01ABCDEFGHIJKLMNOPQRSTUVWXYZ#$%&";
-letters=letters.split("");
+Continue →
 
-let font=16;
-let columns=canvas.width/font;
-let drops=[];
+</button>
 
-for(let x=0;x<columns;x++)
-drops[x]=1;
+</div>
 
-function draw(){
+</section>
 
-ctx.fillStyle="rgba(0,0,0,.08)";
-ctx.fillRect(0,0,canvas.width,canvas.height);
+<!-- Question 1 -->
 
-ctx.fillStyle="#00ff88";
-ctx.font=font+"px monospace";
+<section id="q1" class="screen">
 
-for(let i=0;i<drops.length;i++){
+<div class="glass">
 
-let text=letters[Math.floor(Math.random()*letters.length)];
+<h2>
 
-ctx.fillText(text,i*font,drops[i]*font);
+Did you smile today?
 
-if(drops[i]*font>canvas.height&&Math.random()>0.975)
-drops[i]=0;
+</h2>
 
-drops[i]++;
+<div class="buttons">
 
-}
+<button class="same">
 
-}
+YES 😊
 
-setInterval(draw,35);
+</button>
 
-function createBalloons(){
+<button class="same">
 
-const emojis=["🎈","🎉","✨","🎊"];
+Ofc As Always 😎
 
-setInterval(()=>{
+</button>
 
-let b=document.createElement("div");
+</div>
 
-b.className="balloon";
+</div>
 
-b.innerHTML=emojis[Math.floor(Math.random()*emojis.length)];
+</section>
 
-b.style.left=Math.random()*100+"vw";
+<!-- Question 2 -->
 
-b.style.animationDuration=(6+Math.random()*6)+"s";
+<section id="q2" class="screen">
 
-document.body.appendChild(b);
+<div class="glass">
 
-setTimeout(()=>b.remove(),12000);
+<h2>
 
-},400);
+Biriyani Share Karogi Na 👉👈😁
 
-}
+</h2>
 
-</script>
+<div class="buttons">
+
+<button class="same2">
+
+Haan 
+
+</button>
+
+<button class="same2">
+
+Bilkul Hn ji 😌
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- Question 3 -->
+
+<section id="q3" class="screen">
+
+<div class="glass">
+
+<h2>
+
+Ab wapas mat jana...
+Itni mehnat lagi hai. 😭
+
+</h2>
+
+<button id="finalBtn">
+
+Mere paas time hai. 😁/ Dusra option hai hi nhi 😜😚
+
+</button>
+
+</div>
+
+</section>
+<!-- 🐼 Catch Yourself -->
+
+<section id="catchPanda" class="screen">
+
+    <div class="glass">
+
+        <h2>🐼 Catch Yourself</h2>
+
+        <p class="catchText">
+            Find yourself first. 😌
+        </p>
+
+        <p id="pandaCounter">
+            🐼 Caught : 0 / 5
+        </p>
+
+        <div id="pandaArea">
+
+            <div id="panda">
+                🐼
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Final -->
+
+<section id="final" class="screen">
+
+<div class="glass finalCard birthdayCard">
+
+<h1 class="birthdayFont">
+
+Happy Birthday
+
+</h1>
+<p id="finalMessage"></p>
+
+<div class="tiny">
+
+made with unnecessary effort
+
+<br>
+
+just to make you smile.
+
+<br><br>
+
+- Jin 👻👻
+
+</div>
+
+</div>
+
+</section>
+<canvas id="confetti"></canvas>
+<script src="script.js"></script>
 
 </body>
+
 </html>
