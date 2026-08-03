@@ -30,6 +30,7 @@ const same2Btns = document.querySelectorAll(".same2");
 const catchPanda = document.getElementById("catchPanda");
 const panda = document.getElementById("panda");
 const pandaCounter = document.getElementById("pandaCounter");
+const restartBtn = document.getElementById("restartBtn");
 
 
 /* =====================================
@@ -388,22 +389,59 @@ panda.addEventListener("click",function(){
 
     },120);
 
-    if(pandaCaught >= 5){
+    if (pandaCaught >= 5) {
 
-        setTimeout(()=>{
+    setTimeout(() => {
 
-            showScreen(final);
+        showScreen(final);
+        launchConfetti();
+        typeMessage();
+        startRain();
 
-            launchConfetti();
+    }, 500);
 
-            typeMessage();
+} else {
 
-        },500);
+    randomPanda();
 
-    }else{
+}
+});
+function startRain(){
 
-        randomPanda();
+    const rain = document.getElementById("rain");
+
+    rain.innerHTML = "";
+
+    for(let i = 0; i < 120; i++){
+
+        const drop = document.createElement("div");
+
+        drop.className = "drop";
+
+        drop.style.left = Math.random()*100 + "%";
+
+        drop.style.animationDuration =
+    (1.5 + Math.random()*1.2) + "s";
+
+        drop.style.animationDelay =
+            (Math.random()*3) + "s";
+
+        drop.style.opacity =
+            0.15 + Math.random()*0.25;
+
+        rain.appendChild(drop);
 
     }
+
+    setTimeout(()=>{
+
+        rain.innerHTML="";
+
+    },10000);
+
+}
+restartBtn.addEventListener("click", function(){
+
+    location.reload();
 
 });
