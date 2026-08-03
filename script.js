@@ -413,33 +413,32 @@ function startRain(){
 
     rain.innerHTML = "";
 
-    for(let i = 0; i < 120; i++){
+    for(let i = 0; i < 110; i++){
 
         const drop = document.createElement("div");
+        const depth = Math.random();
 
         drop.className = "drop";
 
-        drop.style.left = Math.random()*100 + "%";
+        drop.style.left = (Math.random() * 120 - 10) + "%";
+        drop.style.height = (25 + depth * 65) + "px";
+        drop.style.width = (1 + depth * 1.5) + "px";
 
         drop.style.animationDuration =
-    (1.5 + Math.random()*1.2) + "s";
+            (0.55 + Math.random() * 0.65) + "s";
 
         drop.style.animationDelay =
-            (Math.random()*3) + "s";
+            (Math.random() * 1.2) + "s";
 
         drop.style.opacity =
-            0.15 + Math.random()*0.25;
+            0.12 + depth * 0.4;
 
         rain.appendChild(drop);
-
     }
 
-    setTimeout(()=>{
-
-        rain.innerHTML="";
-
-    },10000);
-
+    setTimeout(() => {
+        rain.innerHTML = "";
+    }, 20000);
 }
 restartBtn.addEventListener("click", function(){
 
