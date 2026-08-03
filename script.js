@@ -24,6 +24,7 @@ const loadingText = document.getElementById("loadingText");
 const progress = document.querySelector(".progress");
 
 const messageEmoji = document.querySelector("#message h2");
+const replyText = document.getElementById("replyText");
 
 const sameBtns = document.querySelectorAll(".same");
 const same2Btns = document.querySelectorAll(".same2");

@@ -888,7 +888,8 @@ background-size:200% 200%;
 
 animation:bgMove 18s ease infinite;
 
-overflow:hidden;
+overflow-x: hidden;
+overflow-y: auto;
 
 }
 
@@ -1244,4 +1245,21 @@ display:none;
 
     transform:translateY(-3px) scale(1.03);
 
+}
+/* Sirf final page ke long message ke liye scroll */
+#final{
+    overflow-y: auto;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+#final .finalCard{
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#finalMessage{
+    min-height: auto;
+    overflow-wrap: anywhere;
 }
