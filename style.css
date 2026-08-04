@@ -1632,3 +1632,23 @@ button.special-btn .special-btn-text{
     0%, 100%{ transform: translateY(0) scale(1); opacity: .75; }
     50%{ transform: translateY(9px) scale(.97); opacity: 1; }
 }
+/* Water droplets lighter/subtle */
+#glassDrops{
+    opacity: .48;
+}
+
+#glassDrops span{
+    filter: blur(.2px);
+}
+
+/* Balloons lighter/subtle */
+.balloon-bg{
+    opacity: .55;
+}
+/* Soft but denser rain */
+.drop{
+    width: 2px;
+    height: 20px;
+    background: rgba(255,255,255,.26);
+    filter: blur(.4px);
+}

@@ -47,7 +47,9 @@ function showScreen(screen){
     });
 
     screen.classList.add("active");
-
+if (screen.querySelector("#nextQuestion")) {
+    setTimeout(launchConfetti, 300);
+}
 }
 /* =====================================
    HAPTIC FEEDBACK
@@ -299,7 +301,7 @@ function launchConfetti(){
 
 const finalMessage=document.getElementById("finalMessage");
 
-const messageText=`Dear Fidak Batul 🎀
+const messageText=` Olelele Fidak Batul 🎀
 
 Amber tum amazing ho har baar to bolta hi hu it's not a big deal i always say facts 😗 or aj ka day kafi special hai 😁 aj koy earth ke gola per aaya tha sabko shocked 🙀 ye hoor pari kon hai 😱😈 phir journey aagye bdha phir dhere dhere kafi mature ho gyi mentally per kabhi kabhi break bhi liya jata hai always acts like maturity but kya hi jarurat hai har baar break Madam ji🤚 aj ke din tera hai khool ker ji 😁 or aagye in future u become a very independence and successful too hard tarike se or kisi ne khub kaha hai past se tum soch ker ukhad nhi sakte or future se to hn if u have time machine 💃🕺 hoga to btnana mai bhi chalunga 😁🤚 khool ker jio 😁 or jab independence hona to or khool ker jina 😁 In sha Allah Allah Apka future bhi janta hai or wo future for sure mast hoga sabko milta hai bhale past mai present mai ya future mai khushi 😁 And yes u too duniya ghumna 💃🕺 or jada bla bla keregi to utha ker fake dunga 😎😈 Yakin nhi hota sg se yaha tak ka safar 😆 it's speechless abhi bhi 😭🫠 Ik its kuch kuch cringe hai but IDC 😎
 
@@ -404,7 +406,7 @@ function startRain(){
 
     rain.innerHTML = "";
 
-    for(let i = 0; i < 110; i++){
+    for(let i = 0; i < 170; i++){
 
         const drop = document.createElement("div");
         const depth = Math.random();
@@ -429,7 +431,7 @@ function startRain(){
 
     setTimeout(() => {
         rain.innerHTML = "";
-    }, 15000);
+    }, 45000);
 }
 restartBtn.addEventListener("click", function(){
 
