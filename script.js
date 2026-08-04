@@ -301,9 +301,9 @@ const finalMessage=document.getElementById("finalMessage");
 
 const messageText=`Dear Fidak Batul 🎀
 
-Amber tum amazing ho har baar to bolta hi hu it's not a big deal i always say facts 😁 or aj ka day kafi special hai 😁 aj koy earth ke gola per aaya tha sabko shocked 🙀 ye hoor pari kon hai 😱😈 phir journey aagye bdha phir dhere dhere kafi mature ho gyi mentally per kabhi kabhi break bhi liya jata hai always acts like maturity but kya hi jarurat hai har baar break Madam ji🤚 aj ke din tera hai khool ker ji 😁 or aagye in future u become a very independence and successful too hard tarike se or kisi ne khub kaha hai past se tum soch ker ukhad nhi sakte or future se to hn if u have time machine 💃🕺 hoga to btnana mai bhi chalunga 😁🤚 khool ker jio 😁 or jab independence hona to or khool ker jina 😁 In sha Allah Allah Apka future bhi janta hai or wo future for sure mast hoga sabko milta hai bhale past mai present mai ya future mai khushi 😁 And yes u too duniya ghumna 💃🕺 or jada bla bla keregi to utha ker fake dunga 😎😈 Yakin nhi hota sg se yaha tak ka safar 😆 it's speechless abhi bhi 😭🫠
+Amber tum amazing ho har baar to bolta hi hu it's not a big deal i always say facts 😗 or aj ka day kafi special hai 😁 aj koy earth ke gola per aaya tha sabko shocked 🙀 ye hoor pari kon hai 😱😈 phir journey aagye bdha phir dhere dhere kafi mature ho gyi mentally per kabhi kabhi break bhi liya jata hai always acts like maturity but kya hi jarurat hai har baar break Madam ji🤚 aj ke din tera hai khool ker ji 😁 or aagye in future u become a very independence and successful too hard tarike se or kisi ne khub kaha hai past se tum soch ker ukhad nhi sakte or future se to hn if u have time machine 💃🕺 hoga to btnana mai bhi chalunga 😁🤚 khool ker jio 😁 or jab independence hona to or khool ker jina 😁 In sha Allah Allah Apka future bhi janta hai or wo future for sure mast hoga sabko milta hai bhale past mai present mai ya future mai khushi 😁 And yes u too duniya ghumna 💃🕺 or jada bla bla keregi to utha ker fake dunga 😎😈 Yakin nhi hota sg se yaha tak ka safar 😆 it's speechless abhi bhi 😭🫠 Ik its kuch kuch cringe hai but IDC 😎
 
-✨`;
+✨`
 
 function typeMessage(){
 
@@ -429,10 +429,30 @@ function startRain(){
 
     setTimeout(() => {
         rain.innerHTML = "";
-    }, 20000);
+    }, 15000);
 }
 restartBtn.addEventListener("click", function(){
 
     location.reload();
 
+});
+// Vibration + premium click effect: buttons and panda
+document.addEventListener("click", function (event) {
+    const clickedItem = event.target.closest("button, #panda");
+
+    if (!clickedItem) return;
+
+    // Android/mobile real vibration
+    if (navigator.vibrate) {
+        navigator.vibrate([12, 25, 16]);
+    }
+
+    // Visual premium vibration (desktop + mobile)
+    clickedItem.classList.remove("premium-tap");
+    void clickedItem.offsetWidth; // animation reset
+    clickedItem.classList.add("premium-tap");
+
+    setTimeout(() => {
+        clickedItem.classList.remove("premium-tap");
+    }, 300);
 });
