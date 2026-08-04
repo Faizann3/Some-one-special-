@@ -1669,3 +1669,17 @@ button.special-btn .special-btn-text{
     text-transform: uppercase;
     color: #3b1e2c;
 }
+/* Mobile smooth final effects */
+#confetti,
+.rain{
+    background: transparent !important;
+}
+
+#glassDrops span,
+.drop{
+    filter: none !important;
+}
+
+#glassDrops span{
+    animation-duration: 11s !important;
+}

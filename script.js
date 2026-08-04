@@ -218,7 +218,7 @@ function launchConfetti(){
 
     confettiPieces=[];
 
-    for(let i=0;i<180;i++){
+    for(let i=0;i<70;i++){
 
         confettiPieces.push({
 
